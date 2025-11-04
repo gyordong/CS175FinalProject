@@ -18,4 +18,19 @@
     <string name="_0_days">0 days</string>
     <string name="check_in">Check In</string>
     <string name="personal_records">Personal Records</string>
+    <string name="name">Name</string>
+    <string name="_10_followers">10 followers</string>
+    <string name="_8_following">8 following</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_11_likes">11</string>
+    <string name="_5_comments">5</string>
+    <string name="_10_mins_ago">10 mins ago</string>
+    <string name="ryan">Ryan</string>
+    <string name="_7_mins_ago">7 mins ago</string>
+    <string name="erica">Erica</string>
+    <string name="home">Home</string>
+    <string name="friends">Friends</string>
+    <string name="camera">Camera</string>
+    <string name="profile">Profile</string>
 </resources>
