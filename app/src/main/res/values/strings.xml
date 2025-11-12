@@ -33,4 +33,6 @@
     <string name="friends">Friends</string>
     <string name="camera">Camera</string>
     <string name="profile">Profile</string>
+    <string name="close_camera">Close camera</string>
+    <string name="take_photo">Take Photo</string>
 </resources>
