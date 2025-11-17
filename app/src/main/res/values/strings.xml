@@ -49,6 +49,10 @@
     <string name="profile">Profile</string>
     <string name="close_camera">Close camera</string>
     <string name="take_photo">Take Photo</string>
+    <string name="friends_title">Friends</string>
+    <string name="search">Search</string>
+    <string name="friend_name">Friend Name</string>
+    <string name="username">\@username</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="name">Name</string>
     <string name="enter_here">Enter Here</string>
