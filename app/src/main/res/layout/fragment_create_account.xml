@@ -21,19 +21,20 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="331dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="312dp"
         android:autofillHints="name"
         android:hint="@string/name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="331dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:autofillHints="@string/prompt_email"
         android:hint="@string/prompt_email"
@@ -45,7 +46,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="331dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:autofillHints="@string/prompt_password"
@@ -74,5 +75,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="< Back"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
