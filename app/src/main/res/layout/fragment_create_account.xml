@@ -84,7 +84,7 @@
         android:layout_marginTop="4dp"
         android:clickable="true"
         android:focusable="true"
-        android:text="< Back"
+        android:text="Back"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
