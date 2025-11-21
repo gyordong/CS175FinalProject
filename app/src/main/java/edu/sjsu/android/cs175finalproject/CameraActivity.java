@@ -10,6 +10,5 @@ public class CameraActivity extends AppCompatActivity {
 
     private PreviewView previewView;
     private ImageCapture imageCapture;
-
     private static final int REQUEST_CODE = 10;
 }
