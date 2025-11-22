@@ -15,9 +15,9 @@
         android:name="edu.sjsu.android.cs175finalproject.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
+    <activity
         android:id="@+id/cameraFragment"
-        android:name="edu.sjsu.android.cs175finalproject.CameraFragment"
+        android:name="edu.sjsu.android.cs175finalproject.CameraActivity"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
