@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.gridlayout)
+    implementation(libs.cardview)
     implementation(libs.camera.core)
     implementation(libs.camera.view)
     testImplementation(libs.junit)
