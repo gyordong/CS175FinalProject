@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the NavHostFragment
         NavHostFragment navHostFragment =
-                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             int id = destination.getId();
 
             // List of fragments where bottom nav should be hidden
-            if (id == R.id.createAccount
-                    || id == R.id.loginFragment
-                    || id == R.id.fragmentLaunch) {
+            if (id == R.id.nav) {
                 bottomNav.setVisibility(View.GONE);
             } else {
                 bottomNav.setVisibility(View.VISIBLE);
