@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
+    app:defaultNavHost="true"
     app:startDestination="@id/homeFragment">
 
     <fragment
@@ -11,18 +12,18 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="edu.sjsu.android.cs175finalproject.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/friendFragment"
+        android:name="edu.sjsu.android.cs175finalproject.FriendFragment"
+        android:label="fragment_friend"
+        tools:layout="@layout/fragment_friend" />
     <fragment
         android:id="@+id/cameraFragment"
         android:name="edu.sjsu.android.cs175finalproject.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
     <fragment
-        android:id="@+id/friendFragment"
-        android:name="edu.sjsu.android.cs175finalproject.FriendFragment"
-        android:label="fragment_friend"
-        tools:layout="@layout/fragment_friend" />
+        android:id="@+id/profileFragment"
+        android:name="edu.sjsu.android.cs175finalproject.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
