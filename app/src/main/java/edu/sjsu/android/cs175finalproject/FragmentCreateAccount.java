@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
@@ -71,11 +70,7 @@ public class FragmentCreateAccount extends Fragment {
 
             try {
                 Navigation.findNavController(requireView())
-                        .navigate(R.id.action_global_nav_main,
-                                null,
-                                new NavOptions.Builder()
-                                        .setPopUpTo(R.id.nav_auth, true)
-                                        .build());
+                        .navigate(R.id.action_createAccount_to_main);
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_LONG).show();
