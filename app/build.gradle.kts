@@ -48,8 +48,14 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.gridlayout)
     implementation(libs.cardview)
-    implementation(libs.camera.core)
-    implementation(libs.camera.view)
+
+    val cameraxVersion = "1.3.1"
+    implementation("androidx.camera:camera-core:${cameraxVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraxVersion}")
+    implementation("androidx.camera:camera-view:${cameraxVersion}")
+    implementation("androidx.camera:camera-video:${cameraxVersion}")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
