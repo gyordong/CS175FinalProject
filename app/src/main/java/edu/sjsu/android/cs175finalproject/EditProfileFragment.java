@@ -1,12 +1,20 @@
 package edu.sjsu.android.cs175finalproject;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,13 @@ public class EditProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static final String PREFS_PREFIX = "user_";
+    private FirebaseAuth mAuth;
+
+    private EditText etName, etBenchPress, etDeadlift, etRDL, etBicepCurl, etLatPulldown, etRows, etShoulderPress,
+                    etInclineBench;
+
 
     public EditProfileFragment() {
         // Required empty public constructor
@@ -60,5 +75,63 @@ public class EditProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        EditText etName = view.findViewById(R.id.etName);
+        EditText etBenchPress = view.findViewById(R.id.etBenchPress);
+        EditText etDeadlift = view.findViewById(R.id.etDeadlift);
+        EditText etRDL = view.findViewById(R.id.etRDL);
+        EditText etBicepCurl = view.findViewById(R.id.etBicepCurls);
+        EditText etLatPulldown = view.findViewById(R.id.etLatPulldown);
+        EditText etRows = view.findViewById(R.id.etRows);
+        EditText etShoulderPress = view.findViewById(R.id.etShoulderPress);
+        EditText etInclineBench = view.findViewById(R.id.etInclineBench);
+        Button saveButton = view.findViewById(R.id.saveProfileButton);
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savePreferences();
+                // TODO: put nav action back to profile here
+            }
+        });
+
+
+    }
+
+    public void savePreferences() {
+        mAuth = FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
+        String prefsName = PREFS_PREFIX + uid;
+        SharedPreferences prefs = requireContext().getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+
+        String name = etName.getText().toString();
+        String benchPress = etBenchPress.getText().toString();
+        String deadlift = etDeadlift.getText().toString();
+        String rdl = etRDL.getText().toString();
+        String bicepCurl = etBicepCurl.getText().toString();
+        String latPulldown = etLatPulldown.getText().toString();
+        String rows = etRows.getText().toString();
+        String shoulderPress = etShoulderPress.getText().toString();
+        String inclineBench = etInclineBench.getText().toString();
+
+        editor.putString("displayName", name);
+        editor.putString("benchPress", benchPress);
+        editor.putString("deadlift", deadlift);
+        editor.putString("rdl", rdl);
+        editor.putString("bicepCurl", bicepCurl);
+        editor.putString("latPulldown", latPulldown);
+        editor.putString("rows", rows);
+        editor.putString("shoulderPress", shoulderPress);
+        editor.putString("inclineBench", inclineBench);
+
+        editor.apply();
     }
 }

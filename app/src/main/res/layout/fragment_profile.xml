@@ -8,7 +8,7 @@
     android:id="@+id/profileFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/profileNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
@@ -29,7 +29,7 @@
         android:src="@drawable/profile_pic_sample"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/profileNameText"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
@@ -145,7 +145,7 @@
             app:layout_row="0">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/benchPressText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -156,7 +156,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/benchPressWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -177,7 +177,7 @@
             app:layout_row="0">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/deadliftText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -189,7 +189,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/deadliftWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -214,7 +214,7 @@
             >
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/rdlText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -225,7 +225,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/rdlWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -247,7 +247,7 @@
             app:layout_row="1">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/bicepCurlText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -258,7 +258,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/bicepCurlWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -284,7 +284,7 @@
             >
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/latPulldownText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -295,7 +295,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/latPulldownWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -317,7 +317,7 @@
             app:layout_row="2">
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/rowText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -328,7 +328,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/rowWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -354,7 +354,7 @@
             >
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/shoulderPressText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -365,7 +365,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/shoulderPressWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -386,7 +386,7 @@
             app:layout_row="3">
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/inclineBenchText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -397,7 +397,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/inclineBenchWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
