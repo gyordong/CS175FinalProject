@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class FragmentCreateAccount extends Fragment {
     private FirebaseAuth mAuth;
@@ -64,19 +66,35 @@ public class FragmentCreateAccount extends Fragment {
                 return;
             }
 
-            createAccount(email, password);
+            createAccount(name, email, password);
         });
         backButton.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_createAccount_back_to_launch));
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(String name, String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity(), task -> {
                     if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(name)
+                                .build();
+                        user.updateProfile(profileUpdates)
+                                .addOnCompleteListener(updateTask -> {
+                                    if (updateTask.isSuccessful()) {
+                                        // Display name updated successfully
+                                        // Proceed to the main activity
+                                        Log.d(TAG, "User profile updated: " + user.getDisplayName());
+                                    } else {
+                                        // Handle error updating profile
+                                        Log.w(TAG, "Failed to update profile.", updateTask.getException());
+                                    }
+                                });
+
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
                         Toast.makeText(requireContext(), "Account created.", Toast.LENGTH_SHORT).show();
-                        // Navigate to the main part of the app
                         try {
                             Navigation.findNavController(requireView())
                                     .navigate(R.id.action_createAccount_to_main);
@@ -85,7 +103,6 @@ public class FragmentCreateAccount extends Fragment {
                             Toast.makeText(getContext(), "Navigation error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         Toast.makeText(requireContext(), "Authentication failed: " + task.getException().getMessage(),
                                 Toast.LENGTH_LONG).show();

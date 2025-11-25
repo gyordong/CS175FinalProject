@@ -1,29 +1,29 @@
 package edu.sjsu.android.cs175finalproject.data;
 
-import edu.sjsu.android.cs175finalproject.data.model.LoggedInUser;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
+
+import edu.sjsu.android.cs175finalproject.data.model.LoggedInUser;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    private final FirebaseAuth mAuth;
 
-        try {
-            // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
-                    new LoggedInUser(
-                            java.util.UUID.randomUUID().toString(),
-                            "Jane Doe");
-            return new Result.Success<>(fakeUser);
-        } catch (Exception e) {
-            return new Result.Error(new IOException("Error logging in", e));
-        }
+    public LoginDataSource() {
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    public Task<AuthResult> login(String username, String password) {
+        return mAuth.signInWithEmailAndPassword(username, password);
     }
 
     public void logout() {
-        // TODO: revoke authentication
+        mAuth.signOut();
     }
 }

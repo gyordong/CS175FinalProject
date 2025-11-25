@@ -69,11 +69,10 @@ public class MainActivity extends AppCompatActivity {
      * For example, check SharedPreferences or FirebaseAuth.
      */
     private boolean userIsLoggedIn() {
-        // TODO: return true if user is logged in
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             return true;
         }
-        return false; // default to false for testing
+        return false; // if not logged in
     }
 }
