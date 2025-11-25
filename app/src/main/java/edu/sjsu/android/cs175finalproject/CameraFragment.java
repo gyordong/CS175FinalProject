@@ -19,6 +19,7 @@ import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
@@ -43,7 +44,7 @@ public class CameraFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         previewView = view.findViewById(R.id.previewView);
-        Button captureButton = view.findViewById(R.id.captureButton);
+        FloatingActionButton captureButton = view.findViewById(R.id.captureButton);
 
         if (allPermissionsGranted()) {
             startCamera();
