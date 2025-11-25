@@ -14,6 +14,8 @@
         android:layout_marginTop="76dp"
         android:text="@string/name_example"
         android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +87,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:text="@string/check_in"
+            android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -112,6 +115,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/personal_records"
         android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +138,8 @@
             android:layout_height="60dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@android:color/transparent"            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_row="0">
@@ -145,7 +151,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/bench_press"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView3"
@@ -154,7 +162,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_180"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -173,7 +183,10 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/deadlift"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView5"
@@ -182,7 +195,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_230"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -205,7 +220,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/rdl"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView7"
@@ -214,7 +231,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_100"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -234,7 +253,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/bicep_curl"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView9"
@@ -243,7 +264,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_60"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -267,7 +290,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/lat_pulldown"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView11"
@@ -276,7 +301,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_120"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -296,7 +323,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/rows"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView13"
@@ -305,7 +334,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_100"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -329,7 +360,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/shoulder_press"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView15"
@@ -338,7 +371,9 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_180"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -357,7 +392,9 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/incline_bench"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/textView17"
@@ -366,26 +403,12 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_150"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
     </androidx.gridlayout.widget.GridLayout>
-
-    <Button
-        android:id="@+id/seeLessButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="8dp"
-        android:text="@string/see_less"
-        android:clickable="true"
-        android:alpha="0.7"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
