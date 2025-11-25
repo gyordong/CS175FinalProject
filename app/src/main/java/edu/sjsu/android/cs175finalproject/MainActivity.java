@@ -9,7 +9,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,12 +42,14 @@ public class MainActivity extends AppCompatActivity {
             navController.setGraph(R.navigation.nav_auth);  // Auth flow
         }
 
+        NavigationUI.setupWithNavController(bottomNav, navController);
+
         // Hide/show bottom nav based on destination
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             int id = destination.getId();
 
             // List of fragments where bottom nav should be hidden
-            if (id == R.id.nav) {
+            if (id == R.id.fragmentLaunch || id == R.id.loginFragment || id == R.id.fragmentCreateAccount) {
                 bottomNav.setVisibility(View.GONE);
             } else {
                 bottomNav.setVisibility(View.VISIBLE);

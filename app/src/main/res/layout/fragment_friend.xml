@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".FriendFragment"
     android:id="@+id/friendFragment">
 
@@ -12,10 +11,13 @@
         android:id="@+id/friendsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/friends_title"
         android:textSize="64sp"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,9 +40,30 @@
         android:id="@+id/friendsRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/circle_1"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginStart="-130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circle_2"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginTop="-130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

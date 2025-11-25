@@ -13,6 +13,7 @@
         android:layout_marginTop="160dp"
         android:text="@string/befit"
         android:textSize="64sp"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,18 +25,41 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="388dp"
         android:text="@string/log_in"
+        android:backgroundTint="@color/light_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+    </Button>
 
     <Button
         android:id="@+id/_btn"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
         android:text="@string/create_account"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn">
     </Button>
+
+    <View
+        android:id="@+id/circle_1"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginStart="-130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circle_2"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginTop="-130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
