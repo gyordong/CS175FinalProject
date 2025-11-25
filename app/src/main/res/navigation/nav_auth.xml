@@ -5,6 +5,7 @@
     android:id="@+id/nav_auth"
     app:startDestination="@id/fragmentLaunch">
 
+    <include app:graph="@navigation/nav" />
 
     <fragment
         android:id="@+id/fragmentLaunch"

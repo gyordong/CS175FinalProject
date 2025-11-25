@@ -133,16 +133,11 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), welcome, Toast.LENGTH_LONG).show();
         }
 
-        // ✅ Navigate to main app graph
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container);
+        Navigation.findNavController(requireView()).navigate(R.id.action_login_to_main);
 
-        navController.navigate(
-                R.id.action_global_nav_main,
-                null,
-                new NavOptions.Builder()
-                        .setPopUpTo(R.id.nav_auth, true)
-                        .build());
-
+//        NavOptions navOptions = new NavOptions.Builder()
+//                .setPopUpTo(R.id.nav_auth, true) // remove auth from backstack
+//                .build();
     }
 
 
