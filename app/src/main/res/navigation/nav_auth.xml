@@ -54,8 +54,4 @@
             app:popUpTo="@id/nav_auth"
             app:popUpToInclusive="true"/>
     </fragment>
-    <action
-        android:id="@+id/action_global_nav_main"
-        app:destination="@navigation/nav"
-        app:launchSingleTop="true"/>
 </navigation>

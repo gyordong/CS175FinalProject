@@ -134,16 +134,15 @@ public class LoginFragment extends Fragment {
         }
 
         // ✅ Navigate to main app graph
-        Navigation.findNavController(requireView())
-                .navigate(R.id.action_global_nav_main,
-                        null,
-                        new NavOptions.Builder()
-                                .setPopUpTo(R.id.nav_auth, true) // clears auth from backstack
-                                .build());
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container);
 
-//        NavOptions navOptions = new NavOptions.Builder()
-//                .setPopUpTo(R.id.nav_auth, true) // remove auth from backstack
-//                .build();
+        navController.navigate(
+                R.id.action_global_nav_main,
+                null,
+                new NavOptions.Builder()
+                        .setPopUpTo(R.id.nav_auth, true)
+                        .build());
+
     }
 
 
