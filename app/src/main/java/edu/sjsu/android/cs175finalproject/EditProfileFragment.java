@@ -1,20 +1,39 @@
 package edu.sjsu.android.cs175finalproject;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,20 +42,15 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class EditProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private static final String PREFS_PREFIX = "user_";
     private FirebaseAuth mAuth;
 
     private EditText etName, etBenchPress, etDeadlift, etRDL, etBicepCurl, etLatPulldown, etRows, etShoulderPress,
                     etInclineBench;
+    private ImageView profileImage;
+    private ActivityResultLauncher<Intent> imagePickerLauncher;
+    private ActivityResultLauncher<String> permissionLauncher;
 
 
     public EditProfileFragment() {
@@ -54,20 +68,16 @@ public class EditProfileFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static EditProfileFragment newInstance(String param1, String param2) {
         EditProfileFragment fragment = new EditProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -81,16 +91,46 @@ public class EditProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EditText etName = view.findViewById(R.id.etName);
-        EditText etBenchPress = view.findViewById(R.id.etBenchPress);
-        EditText etDeadlift = view.findViewById(R.id.etDeadlift);
-        EditText etRDL = view.findViewById(R.id.etRDL);
-        EditText etBicepCurl = view.findViewById(R.id.etBicepCurls);
-        EditText etLatPulldown = view.findViewById(R.id.etLatPulldown);
-        EditText etRows = view.findViewById(R.id.etRows);
-        EditText etShoulderPress = view.findViewById(R.id.etShoulderPress);
-        EditText etInclineBench = view.findViewById(R.id.etInclineBench);
         Button saveButton = view.findViewById(R.id.saveProfileButton);
+
+        ImageView profileImage = view.findViewById(R.id.editProfileImage);
+
+        imagePickerLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri imageUri = result.getData().getData();
+                        if (imageUri != null) {
+                            try {
+                                // Display the image
+                                profileImage.setImageURI(imageUri);
+
+                                // Save the image to internal storage
+                                saveProfilePicture(imageUri);
+
+                                Toast.makeText(getContext(), "Profile picture updated!", Toast.LENGTH_SHORT).show();
+                            } catch (Exception e) {
+                                Toast.makeText(getContext(), "Error loading image", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+        );
+
+        // Initialize permission launcher
+        permissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        intent.setType("image/*");
+                        imagePickerLauncher.launch(intent);
+                    } else {
+                        Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +141,25 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
+        loadProfilePicture();
 
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // read media images for 33+, read external storage for api < 33
+                String permission = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+                        ? Manifest.permission.READ_MEDIA_IMAGES
+                        : Manifest.permission.READ_EXTERNAL_STORAGE;
+
+                if (ContextCompat.checkSelfPermission(getContext(), permission) == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    imagePickerLauncher.launch(intent);
+                } else {
+                    permissionLauncher.launch(permission);
+                }
+            }
+        });
     }
 
     public void savePreferences() {
@@ -133,5 +191,46 @@ public class EditProfileFragment extends Fragment {
         editor.putString("inclineBench", inclineBench);
 
         editor.apply();
+    }
+
+    private void saveProfilePicture(Uri imageUri) {
+        try {
+            InputStream inputStream = getContext().getContentResolver().openInputStream(imageUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            inputStream.close();
+
+            // Resize bitmap to reduce storage space
+            Bitmap resizedBitmap = resizeBitmap(bitmap, 500, 500);
+
+            // Save to internal storage
+            File file = new File(getContext().getFilesDir(), "profile_picture.jpg");
+            FileOutputStream fos = new FileOutputStream(file);
+            resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+            fos.close();
+
+            bitmap.recycle();
+            resizedBitmap.recycle();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadProfilePicture() {
+        File file = new File(getContext().getFilesDir(), "profile_picture.jpg");
+        if (file.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profileImage.setImageBitmap(bitmap);
+        }
+    }
+
+    private Bitmap resizeBitmap(Bitmap bitmap, int maxWidth, int maxHeight) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        float ratio = Math.min((float) maxWidth / width, (float) maxHeight / height);
+        int newWidth = Math.round(width * ratio);
+        int newHeight = Math.round(height * ratio);
+
+        return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
     }
 }

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +35,9 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     private static final String PREFS_PREFIX = "user_";
     private FirebaseAuth mAuth;
+
+    private Button checkInButton;
+
 
     private TextView displayName, benchPress, deadlift,
             rdl, bicepCurl, latPulldown, rows, shoulderPress, inclineBench;
@@ -80,6 +84,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        checkInButton = view.findViewById(R.id.checkIn_Btn);
 
         displayName = view.findViewById(R.id.profileNameText);
         benchPress = view.findViewById(R.id.benchPressWeight);
