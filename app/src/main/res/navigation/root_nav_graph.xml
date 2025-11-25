@@ -10,4 +10,9 @@
     <!-- Nested Main Graph (Home, Camera, Friends, etc.) -->
     <include app:graph="@navigation/nav" />
 
+    <action
+        android:id="@+id/action_global_nav_main"
+        app:destination="@navigation/nav"
+        app:launchSingleTop="true"/>
+
 </navigation>

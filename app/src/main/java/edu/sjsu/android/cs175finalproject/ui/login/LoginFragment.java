@@ -133,13 +133,7 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), welcome, Toast.LENGTH_LONG).show();
         }
 
-        // ✅ Navigate to main app graph
-        Navigation.findNavController(requireView())
-                .navigate(R.id.action_global_nav_main,
-                        null,
-                        new NavOptions.Builder()
-                                .setPopUpTo(R.id.nav_auth, true) // clears auth from backstack
-                                .build());
+        Navigation.findNavController(requireView()).navigate(R.id.action_login_to_main);
 
 //        NavOptions navOptions = new NavOptions.Builder()
 //                .setPopUpTo(R.id.nav_auth, true) // remove auth from backstack
