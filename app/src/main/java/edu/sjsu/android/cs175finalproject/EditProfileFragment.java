@@ -18,11 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,6 +54,7 @@ public class EditProfileFragment extends Fragment {
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private ActivityResultLauncher<String> permissionLauncher;
 
+    private ImageView backArrow;
 
     public EditProfileFragment() {
         // Required empty public constructor
@@ -90,10 +93,23 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Button saveButton = view.findViewById(R.id.saveProfileButton);
 
         ImageView profileImage = view.findViewById(R.id.editProfileImage);
+
+        ImageView backArrow = view.findViewById(R.id.back_arrow);
+
+        etName = view.findViewById(R.id.etName);
+        etBenchPress = view.findViewById(R.id.etBenchPress);
+        etDeadlift = view.findViewById(R.id.etDeadlift);
+        etRDL = view.findViewById(R.id.etRDL);
+        etBicepCurl = view.findViewById(R.id.etBicepCurls);
+        etLatPulldown = view.findViewById(R.id.etLatPulldown);
+        etRows = view.findViewById(R.id.etRows);
+        etShoulderPress = view.findViewById(R.id.etShoulderPress);
+        etInclineBench = view.findViewById(R.id.etInclineBench);
+
+        loadProfilePicture();
 
         imagePickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -137,11 +153,18 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 savePreferences();
-                // TODO: put nav action back to profile here
+                Navigation.findNavController(v).navigate(R.id.action_editProfileFragment_to_profileFragment);
             }
         });
 
-        loadProfilePicture();
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_editProfileFragment_to_profileFragment);
+            }
+        });
+
+        // TODO: add a listener to close the keyboard on edit profile when clicking non-interactable
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,25 +193,43 @@ public class EditProfileFragment extends Fragment {
         SharedPreferences.Editor editor = prefs.edit();
 
 
-        String name = etName.getText().toString();
-        String benchPress = etBenchPress.getText().toString();
-        String deadlift = etDeadlift.getText().toString();
-        String rdl = etRDL.getText().toString();
-        String bicepCurl = etBicepCurl.getText().toString();
-        String latPulldown = etLatPulldown.getText().toString();
-        String rows = etRows.getText().toString();
-        String shoulderPress = etShoulderPress.getText().toString();
-        String inclineBench = etInclineBench.getText().toString();
+        String name = etName.getText().toString().trim();
+        String benchPress = etBenchPress.getText().toString().trim();
+        String deadlift = etDeadlift.getText().toString().trim();
+        String rdl = etRDL.getText().toString().trim();
+        String bicepCurl = etBicepCurl.getText().toString().trim();
+        String latPulldown = etLatPulldown.getText().toString().trim();
+        String rows = etRows.getText().toString().trim();
+        String shoulderPress = etShoulderPress.getText().toString().trim();
+        String inclineBench = etInclineBench.getText().toString().trim();
 
-        editor.putString("displayName", name);
-        editor.putString("benchPress", benchPress);
-        editor.putString("deadlift", deadlift);
-        editor.putString("rdl", rdl);
-        editor.putString("bicepCurl", bicepCurl);
-        editor.putString("latPulldown", latPulldown);
-        editor.putString("rows", rows);
-        editor.putString("shoulderPress", shoulderPress);
-        editor.putString("inclineBench", inclineBench);
+        if (!name.isEmpty()) {
+            editor.putString("displayName", name);
+        }
+        if (!benchPress.isEmpty()) {
+            editor.putString("benchPress", benchPress);
+        }
+        if (!deadlift.isEmpty()) {
+            editor.putString("deadlift", deadlift);
+        }
+        if (!rdl.isEmpty()) {
+            editor.putString("rdl", rdl);
+        }
+        if (!bicepCurl.isEmpty()) {
+            editor.putString("bicepCurl", bicepCurl);
+        }
+        if (!latPulldown.isEmpty()) {
+            editor.putString("latPulldown", latPulldown);
+        }
+        if (!rows.isEmpty()) {
+            editor.putString("rows", rows);
+        }
+        if (!shoulderPress.isEmpty()) {
+            editor.putString("shoulderPress", shoulderPress);
+        }
+        if (!inclineBench.isEmpty()) {
+            editor.putString("inclineBench", inclineBench);
+        }
 
         editor.apply();
     }

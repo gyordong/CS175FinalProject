@@ -9,11 +9,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,12 +37,11 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     private static final String PREFS_PREFIX = "user_";
     private FirebaseAuth mAuth;
-
     private Button checkInButton;
-
-
+    private ImageView editProfileButton;
     private TextView displayName, benchPress, deadlift,
-            rdl, bicepCurl, latPulldown, rows, shoulderPress, inclineBench;
+            rdl, bicepCurl, latPulldown, rows, shoulderPress, inclineBench,
+            streakCount;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -85,6 +86,9 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        editProfileButton = view.findViewById(R.id.edit_profile_Btn);
+
+        streakCount = view.findViewById(R.id.tvStreakCount);
         checkInButton = view.findViewById(R.id.checkIn_Btn);
 
         displayName = view.findViewById(R.id.profileNameText);
@@ -98,6 +102,21 @@ public class ProfileFragment extends Fragment {
         inclineBench = view.findViewById(R.id.inclineBenchWeight);
 
         loadPreferences();
+
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_editProfileFragment);
+            }
+        });
+
+        checkInButton.setOnClickListener(new View.OnClickListener() {
+            // hard coded streak
+            @Override
+            public void onClick(View v) {
+                streakCount.setText("1 day");
+            }
+        });
 
     }
 
