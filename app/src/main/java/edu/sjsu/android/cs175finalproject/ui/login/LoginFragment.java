@@ -29,6 +29,7 @@ import edu.sjsu.android.cs175finalproject.R;
 
 public class LoginFragment extends Fragment {
 
+
     private LoginViewModel loginViewModel;
     private FragmentLoginBinding binding;
 

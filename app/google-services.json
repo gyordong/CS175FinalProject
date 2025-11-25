@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "525110975069",
-    "project_id": "cs175finalproject-4c939",
-    "storage_bucket": "cs175finalproject-4c939.firebasestorage.app"
+    "project_number": "166938521108",
+    "project_id": "belift-902eb",
+    "storage_bucket": "belift-902eb.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:525110975069:android:abca95adc5b5906d314bb4",
+        "mobilesdk_app_id": "1:166938521108:android:25ca0babc8beea65c9c101",
         "android_client_info": {
           "package_name": "edu.sjsu.android.cs175finalproject"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAp1uQ5tc1np_Rx6OU8se7T3KXLHJkD0BA"
+          "current_key": "AIzaSyBt92Z5wQylSCZXkLdxPS_DW2mI4JPRuRI"
         }
       ],
       "services": {
