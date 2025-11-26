@@ -119,6 +119,13 @@ public class ProfileFragment extends Fragment {
             // hard coded streak
             @Override
             public void onClick(View v) {
+                mAuth = FirebaseAuth.getInstance();
+                String uid = mAuth.getCurrentUser().getUid();
+                String prefsName = PREFS_PREFIX + uid;
+                SharedPreferences prefs = requireContext().getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("streak", true);
+                editor.apply();
                 streakCount.setText("1 day");
             }
         });
@@ -141,6 +148,8 @@ public class ProfileFragment extends Fragment {
         String rowsData = prefs.getString("rows", "");
         String shoulderPressData = prefs.getString("shoulderPress", "");
         String inclineBenchData = prefs.getString("inclineBench", "");
+        boolean streakData = prefs.getBoolean("streak", false);
+
 
         System.out.println(displayNameData);
 
@@ -154,7 +163,12 @@ public class ProfileFragment extends Fragment {
         shoulderPress.setText(shoulderPressData);
         inclineBench.setText(inclineBenchData);
 
-
+        // hard-coded streak
+        if (streakData) {
+            streakCount.setText("1 day");
+        } else {
+            streakCount.setText("0 days");
+        }
     }
 
     private void loadProfilePicture() {
