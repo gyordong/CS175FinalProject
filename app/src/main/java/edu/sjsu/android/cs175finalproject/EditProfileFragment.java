@@ -95,9 +95,9 @@ public class EditProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Button saveButton = view.findViewById(R.id.saveProfileButton);
 
-        ImageView profileImage = view.findViewById(R.id.editProfileImage);
+        profileImage = view.findViewById(R.id.editProfileImage);
 
-        ImageView backArrow = view.findViewById(R.id.back_arrow);
+        backArrow = view.findViewById(R.id.back_arrow);
 
         etName = view.findViewById(R.id.etName);
         etBenchPress = view.findViewById(R.id.etBenchPress);
@@ -139,14 +139,27 @@ public class EditProfileFragment extends Fragment {
                 new ActivityResultContracts.RequestPermission(),
                 isGranted -> {
                     if (isGranted) {
-                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                         intent.setType("image/*");
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
                         imagePickerLauncher.launch(intent);
                     } else {
                         Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
+                intent.putExtra("android.content.extra.FANCY", true);
+                intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
+                imagePickerLauncher.launch(intent);
+            }
+        });
 
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -165,24 +178,6 @@ public class EditProfileFragment extends Fragment {
         });
 
         // TODO: add a listener to close the keyboard on edit profile when clicking non-interactable
-
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // read media images for 33+, read external storage for api < 33
-                String permission = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
-                        ? Manifest.permission.READ_MEDIA_IMAGES
-                        : Manifest.permission.READ_EXTERNAL_STORAGE;
-
-                if (ContextCompat.checkSelfPermission(getContext(), permission) == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/*");
-                    imagePickerLauncher.launch(intent);
-                } else {
-                    permissionLauncher.launch(permission);
-                }
-            }
-        });
     }
 
     public void savePreferences() {

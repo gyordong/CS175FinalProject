@@ -4,6 +4,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +42,7 @@ public class ProfileFragment extends Fragment {
     private static final String PREFS_PREFIX = "user_";
     private FirebaseAuth mAuth;
     private Button checkInButton;
-    private ImageView editProfileButton;
+    private ImageView editProfileButton, profilePic;
     private TextView displayName, benchPress, deadlift,
             rdl, bicepCurl, latPulldown, rows, shoulderPress, inclineBench,
             streakCount;
@@ -87,6 +91,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         editProfileButton = view.findViewById(R.id.edit_profile_Btn);
+        profilePic = view.findViewById(R.id.profilePic);
 
         streakCount = view.findViewById(R.id.tvStreakCount);
         checkInButton = view.findViewById(R.id.checkIn_Btn);
@@ -148,6 +153,16 @@ public class ProfileFragment extends Fragment {
         rows.setText(rowsData);
         shoulderPress.setText(shoulderPressData);
         inclineBench.setText(inclineBenchData);
+
+
+    }
+
+    private void loadProfilePicture() {
+        File file = new File(getContext().getFilesDir(), "profile_picture.jpg");
+        if (file.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profilePic.setImageBitmap(bitmap);
+        }
     }
 
 }
