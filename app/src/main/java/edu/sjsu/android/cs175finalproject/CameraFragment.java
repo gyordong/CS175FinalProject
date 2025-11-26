@@ -1,11 +1,11 @@
 package edu.sjsu.android.cs175finalproject;
 
 import android.Manifest;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +18,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -29,6 +31,8 @@ public class CameraFragment extends Fragment {
 
     private PreviewView previewView;
     private ImageCapture imageCapture;
+    private ProcessCameraProvider cameraProvider;
+
     private static final int REQUEST_CODE = 10;
     private final String[] REQUIRED_PERMISSIONS = new String[]{Manifest.permission.CAMERA};
 
@@ -51,32 +55,8 @@ public class CameraFragment extends Fragment {
         } else {
             requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE);
         }
+
         captureButton.setOnClickListener(v -> takePhoto());
-    }
-
-    private void takePhoto() {
-        if (imageCapture == null) return;
-
-        File outputDir = getContext().getExternalFilesDir(null);
-        File photoFile = new File(outputDir, "photo-" + System.currentTimeMillis() + ".jpg");
-
-        ImageCapture.OutputFileOptions outputOptions =
-                new ImageCapture.OutputFileOptions.Builder(photoFile).build();
-
-        imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(getContext()),
-                new ImageCapture.OnImageSavedCallback() {
-                    @Override
-                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Toast.makeText(getContext(),
-                                "Saved to: " + photoFile.getAbsolutePath(),
-                                Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(@NonNull ImageCaptureException exception) {
-                        Toast.makeText(getContext(), "Photo capture failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     private void startCamera() {
@@ -85,7 +65,7 @@ public class CameraFragment extends Fragment {
 
         cameraProviderFuture.addListener(() -> {
             try {
-                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
+                cameraProvider = cameraProviderFuture.get();
 
                 Preview preview = new Preview.Builder().build();
                 preview.setSurfaceProvider(previewView.getSurfaceProvider());
@@ -95,7 +75,7 @@ public class CameraFragment extends Fragment {
 
                 cameraProvider.unbindAll();
                 cameraProvider.bindToLifecycle(
-                        getViewLifecycleOwner(),  // <--- FIX
+                        getViewLifecycleOwner(),
                         cameraSelector,
                         preview,
                         imageCapture
@@ -107,6 +87,45 @@ public class CameraFragment extends Fragment {
         }, ContextCompat.getMainExecutor(requireContext()));
     }
 
+    private void takePhoto() {
+        if (imageCapture == null) return;
+
+        File outputDir = getContext().getExternalFilesDir(null);
+        File photoFile = new File(outputDir, "photo-" + System.currentTimeMillis() + ".jpg");
+
+        ImageCapture.OutputFileOptions outputOptions =
+                new ImageCapture.OutputFileOptions.Builder(photoFile).build();
+
+        imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(requireContext()),
+                new ImageCapture.OnImageSavedCallback() {
+                    @Override
+                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        String filePath = photoFile.getAbsolutePath();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("imagePath", filePath);
+
+                        NavController navController = NavHostFragment.findNavController(CameraFragment.this);
+                        navController.navigate(R.id.action_cameraFragment_to_addPostFragment, bundle);
+                    }
+
+                    @Override
+                    public void onError(@NonNull ImageCaptureException exception) {
+                        Toast.makeText(getContext(), "Photo capture failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // clear previous image
+        if (cameraProvider != null) {
+            cameraProvider.unbindAll(); // stop the previous image
+            startCamera(); // start fresh
+        }
+    }
 
     private boolean allPermissionsGranted() {
         for (String permission : REQUIRED_PERMISSIONS) {

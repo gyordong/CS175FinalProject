@@ -9,29 +9,29 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="426dp"
-        android:layout_height="804dp"
-        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:navGraph="@navigation/root_nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
-        android:layout_width="410dp"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:itemTextColor="@color/bottom_nav_colors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/white"
         app:backgroundTint="@color/white"
-        app:itemIconSize="27dp"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment_container"
-        app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/bottom_nav_menu"
-        app:shapeAppearanceOverlay="@style/BottomNavRoundedCorners" />
+        app:shapeAppearanceOverlay="@style/BottomNavRoundedCorners"
+        android:fitsSystemWindows="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
