@@ -7,26 +7,11 @@
     tools:context=".CameraFragment"
     android:id="@+id/cameraFragment">
 
-    <ImageButton
-        android:id="@+id/closeButton"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/close_camera"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/down_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/closeButton"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/captureButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,6 +21,8 @@
         android:layout_width="46dp"
         android:layout_height="61dp"
         android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
         android:contentDescription="@string/take_photo"
         app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
