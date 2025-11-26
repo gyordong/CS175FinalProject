@@ -1,5 +1,11 @@
 package edu.sjsu.android.cs175finalproject.data;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
+
 import edu.sjsu.android.cs175finalproject.data.model.LoggedInUser;
 
 /**
@@ -43,12 +49,19 @@ public class LoginRepository {
         // @see https://developer.android.com/training/articles/keystore
     }
 
-    public Result<LoggedInUser> login(String username, String password) {
-        // handle login
-        Result<LoggedInUser> result = dataSource.login(username, password);
-        if (result instanceof Result.Success) {
-            setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
-        }
-        return result;
+    public LiveData<Result<LoggedInUser>> login(String username, String password) {
+        MutableLiveData<Result<LoggedInUser>> resultLiveData = new MutableLiveData<>();
+        dataSource.login(username, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                AuthResult authResult = task.getResult();
+                FirebaseUser firebaseUser = authResult.getUser();
+                LoggedInUser loggedInUser = new LoggedInUser(firebaseUser.getUid(), firebaseUser.getDisplayName());
+                setLoggedInUser(loggedInUser);
+                resultLiveData.setValue(new Result.Success<>(loggedInUser));
+            } else {
+                resultLiveData.setValue(new Result.Error(task.getException()));
+            }
+        });
+        return resultLiveData;
     }
 }

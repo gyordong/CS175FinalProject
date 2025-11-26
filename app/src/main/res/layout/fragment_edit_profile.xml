@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/back_arrow" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
+                android:id="@+id/editProfileImage"
                 android:layout_width="142dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="16dp"
@@ -185,13 +185,25 @@
                 android:hint="@string/enter_here"
                 android:inputType="number"/>
 
-            <Button
-                android:id="@+id/add_workoutBtb"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_workout"
-                android:layout_marginTop="5dp" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/saveProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="40dp"/>
 
+                <Button
+                    android:id="@+id/add_workoutBtb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_workout"
+                    android:layout_marginTop="5dp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

@@ -6,9 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.NavOptions;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -53,6 +51,7 @@ public class LoginFragment extends Fragment {
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.loginBtn;
         Button backButton = binding.backButton;
+
 
         loginViewModel.getLoginFormState().observe(getViewLifecycleOwner(), new Observer<LoginFormState>() {
             @Override
@@ -128,18 +127,13 @@ public class LoginFragment extends Fragment {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String welcome = getString(R.string.welcome);
         if (getContext() != null) {
             Toast.makeText(getContext(), welcome, Toast.LENGTH_LONG).show();
         }
 
         Navigation.findNavController(requireView()).navigate(R.id.action_login_to_main);
-
-//        NavOptions navOptions = new NavOptions.Builder()
-//                .setPopUpTo(R.id.nav_auth, true) // remove auth from backstack
-//                .build();
     }
-
 
     private void showLoginFailed(@StringRes Integer errorString) {
         if (getContext() != null && getContext().getApplicationContext() != null) {

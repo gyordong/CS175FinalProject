@@ -1,12 +1,28 @@
 package edu.sjsu.android.cs175finalproject;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +39,13 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private static final String PREFS_PREFIX = "user_";
+    private FirebaseAuth mAuth;
+    private Button checkInButton;
+    private ImageView editProfileButton, profilePic;
+    private TextView displayName, benchPress, deadlift,
+            rdl, bicepCurl, latPulldown, rows, shoulderPress, inclineBench,
+            streakCount;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -61,4 +84,99 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        editProfileButton = view.findViewById(R.id.edit_profile_Btn);
+        profilePic = view.findViewById(R.id.profilePic);
+
+        streakCount = view.findViewById(R.id.tvStreakCount);
+        checkInButton = view.findViewById(R.id.checkIn_Btn);
+
+        displayName = view.findViewById(R.id.profileNameText);
+        benchPress = view.findViewById(R.id.benchPressWeight);
+        deadlift = view.findViewById(R.id.deadliftWeight);
+        rdl = view.findViewById(R.id.rdlWeight);
+        bicepCurl = view.findViewById(R.id.bicepCurlWeight);
+        latPulldown = view.findViewById(R.id.latPulldownWeight);
+        rows = view.findViewById(R.id.rowWeight);
+        shoulderPress = view.findViewById(R.id.shoulderPressWeight);
+        inclineBench = view.findViewById(R.id.inclineBenchWeight);
+
+        loadPreferences();
+
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_profileFragment_to_editProfileFragment);
+            }
+        });
+
+        checkInButton.setOnClickListener(new View.OnClickListener() {
+            // hard coded streak
+            @Override
+            public void onClick(View v) {
+                mAuth = FirebaseAuth.getInstance();
+                String uid = mAuth.getCurrentUser().getUid();
+                String prefsName = PREFS_PREFIX + uid;
+                SharedPreferences prefs = requireContext().getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("streak", true);
+                editor.apply();
+                streakCount.setText("1 day");
+            }
+        });
+
+    }
+
+    // can add placeholders if deemed better
+    private void loadPreferences() {
+        mAuth = FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
+        String prefsName = PREFS_PREFIX + uid;
+        SharedPreferences prefs = requireContext().getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+
+        String displayNameData = prefs.getString("displayName", mAuth.getCurrentUser().getDisplayName());
+        String benchPressData = prefs.getString("benchPress", "");
+        String deadliftData = prefs.getString("deadlift", "");
+        String rdlData = prefs.getString("rdl", "");
+        String bicepCurlData = prefs.getString("bicepCurl", "");
+        String latPulldownData = prefs.getString("latPulldown", "");
+        String rowsData = prefs.getString("rows", "");
+        String shoulderPressData = prefs.getString("shoulderPress", "");
+        String inclineBenchData = prefs.getString("inclineBench", "");
+        boolean streakData = prefs.getBoolean("streak", false);
+
+
+        System.out.println(displayNameData);
+
+        displayName.setText(displayNameData);
+        benchPress.setText(benchPressData);
+        deadlift.setText(deadliftData);
+        rdl.setText(rdlData);
+        bicepCurl.setText(bicepCurlData);
+        latPulldown.setText(latPulldownData);
+        rows.setText(rowsData);
+        shoulderPress.setText(shoulderPressData);
+        inclineBench.setText(inclineBenchData);
+
+        // hard-coded streak
+        if (streakData) {
+            streakCount.setText("1 day");
+        } else {
+            streakCount.setText("0 days");
+        }
+    }
+
+    private void loadProfilePicture() {
+        File file = new File(getContext().getFilesDir(), "profile_picture.jpg");
+        if (file.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profilePic.setImageBitmap(bitmap);
+        }
+    }
+
 }
