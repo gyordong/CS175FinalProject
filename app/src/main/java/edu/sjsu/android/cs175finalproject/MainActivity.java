@@ -1,6 +1,7 @@
 package edu.sjsu.android.cs175finalproject;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             int id = destination.getId();
 
             // List of fragments where bottom nav should be hidden
-            if (id == R.id.fragmentLaunch || id == R.id.loginFragment || id == R.id.fragmentCreateAccount) {
+            if (id == R.id.fragmentLaunch || id == R.id.loginFragment || id == R.id.fragmentCreateAccount){
                 bottomNav.setVisibility(View.GONE);
             } else {
                 bottomNav.setVisibility(View.VISIBLE);
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         // Edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
             return insets;
         });
     }
