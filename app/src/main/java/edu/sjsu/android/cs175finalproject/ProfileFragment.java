@@ -169,6 +169,8 @@ public class ProfileFragment extends Fragment {
         } else {
             streakCount.setText("0 days");
         }
+
+        loadProfilePicture();
     }
 
     private void loadProfilePicture() {
