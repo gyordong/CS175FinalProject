@@ -45,12 +45,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back_arrow" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/editProfileImage"
                 android:layout_width="142dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="16dp"
                 android:clickable="true"
+                app:shapeAppearanceOverlay="@style/CircularImage"
+                android:scaleType="centerCrop"
                 android:src="@drawable/profile_pic_sample"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.059"

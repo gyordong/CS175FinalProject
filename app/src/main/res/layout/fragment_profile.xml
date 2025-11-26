@@ -21,15 +21,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profilePic"
-        android:layout_width="92dp"
-        android:layout_height="81dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/profile_pic_sample"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileNameText"
+        app:shapeAppearanceOverlay="@style/CircularImage"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
