@@ -7,6 +7,36 @@
     tools:context=".HomeFragment"
     android:id="@+id/homeFragment">
 
+    <View
+        android:id="@+id/circle_1"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginTop="-80dp"
+        android:layout_marginStart="-120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circle_2"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="280dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circle_3"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/circle"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="-120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
