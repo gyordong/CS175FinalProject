@@ -23,12 +23,13 @@
         android:id="@+id/login_btn"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
-        android:backgroundTint="@color/light_grey"
+        android:layout_marginTop="388dp"
         android:text="@string/log_in"
+        android:backgroundTint="@color/light_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+    </Button>
 
     <Button
         android:id="@+id/_btn"
