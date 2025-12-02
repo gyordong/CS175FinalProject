@@ -3,10 +3,6 @@ package edu.sjsu.android.cs175finalproject;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +15,11 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.api.Distribution;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    Button reactButton;
-    PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
             return insets;
         });
-
-        reactButton = findViewById(R.id.reactBtn);
-        reactButton.setOnLongClickListener(v -> {
-            showReactionPopup(v);
-            return true;
-        });
     }
 
     /**
@@ -88,42 +75,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false; // if not logged in
-    }
-
-    private void showReactionPopup(View anchorView){
-        View popupView = getLayoutInflater().inflate(R.layout.reaction_popup, null);
-
-        popupWindow = new PopupWindow(
-                popupView,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                true);
-
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-
-        popupWindow.showAsDropDown(anchorView, -100, -150);
-
-        TextView laugh = popupView.findViewById(R.id.laugh_react);
-        TextView skull = popupView.findViewById(R.id.skull_react);
-        TextView shock = popupView.findViewById(R.id.shock_react);
-        TextView fire = popupView.findViewById(R.id.fire_react);
-
-        laugh.setOnClickListener(v -> {
-            reactButton.setText("😂");
-            popupWindow.dismiss();
-        });
-        skull.setOnClickListener(v -> {
-            reactButton.setText("💀");
-            popupWindow.dismiss();
-        });
-        shock.setOnClickListener(v -> {
-            reactButton.setText("😧");
-            popupWindow.dismiss();
-        });
-        fire.setOnClickListener(v -> {
-            reactButton.setText("🔥");
-            popupWindow.dismiss();
-        });
     }
 }
