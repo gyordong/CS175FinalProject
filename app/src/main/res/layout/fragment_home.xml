@@ -39,10 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dp"
-                android:visibility="invisible"
                 app:cardBackgroundColor="#2D4032"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
+                <!--android:visibility="invisible"-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,32 +99,50 @@
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/heart" />
+                        <ImageButton
+                            android:id="@+id/likeBtn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:backgroundTint="@android:color/transparent"
+                            android:padding="4dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart_outline" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
                             android:text="2"
-                            android:textSize="16sp" />
+                            android:textSize="17sp" />
 
-                        <ImageView
+                        <ImageButton
+                            android:id="@+id/react_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
+                            android:layout_gravity="center"
                             android:text="@string/_2_reactions"
-                            android:textSize="16sp" />
+                            android:textSize="17sp" />
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/reaction_display"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:visibility="gone"/>
 
                 </LinearLayout>
 
@@ -194,29 +212,38 @@
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/heart" />
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:backgroundTint="@android:color/transparent"
+                            android:padding="4dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart_outline" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:text="@string/_4_likes"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:layout_gravity="center"/>
 
-                        <ImageView
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:text="@string/_1_reactions"
+                            android:layout_gravity="center"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -289,31 +316,39 @@
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/heart"
-                            tools:ignore="ContentDescription" />
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:backgroundTint="@android:color/transparent"
+                            android:padding="4dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart_outline" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:text="@string/_7_likes"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:layout_gravity="center"/>
 
-                        <ImageView
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:src="@drawable/outline_add_reaction_24" />
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/outline_add_reaction_24"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:text="@string/_3_reactions"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:layout_gravity="center" />
 
                     </LinearLayout>
 
@@ -385,30 +420,38 @@
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/heart" />
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:backgroundTint="@android:color/transparent"
+                            android:padding="4dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/heart_outline" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:text="@string/_11_likes"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:layout_gravity="center"/>
 
-                        <ImageView
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:text="@string/_5_reactions"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:layout_gravity="center"/>
 
                     </LinearLayout>
 
