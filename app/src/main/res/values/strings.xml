@@ -38,7 +38,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="_11_likes">11</string>
-    <string name="_5_comments">5</string>
+    <string name="_7_likes">7</string>
+    <string name="_4_likes">4</string>
     <string name="_10_mins_ago">10 mins ago</string>
     <string name="ryan">Ryan</string>
     <string name="_7_mins_ago">7 mins ago</string>
@@ -59,4 +60,8 @@
     <string name="back_arrow">back arrow</string>
     <string name="add_workout">Add Workout</string>
     <string name="back">Back</string>
+    <string name="_2_reactions">2</string>
+    <string name="_1_reactions">1</string>
+    <string name="_3_reactions">3</string>
+    <string name="_5_reactions">5</string>
 </resources>

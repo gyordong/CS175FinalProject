@@ -23,24 +23,21 @@
         android:id="@+id/login_btn"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
-        android:text="@string/log_in"
+        android:layout_marginTop="304dp"
         android:backgroundTint="@color/light_grey"
+        android:text="@string/log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/textView"></Button>
 
     <Button
         android:id="@+id/_btn"
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:text="@string/create_account"
         android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn">
-    </Button>
+        android:text="@string/create_account"
+        app:layout_constraintStart_toStartOf="@+id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn"></Button>
 
     <View
         android:id="@+id/circle_1"

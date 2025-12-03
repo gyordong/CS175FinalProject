@@ -153,7 +153,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/bench_press"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -164,7 +164,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_180"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -185,7 +185,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/deadlift"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
 
                 android:textColor="@color/black"/>
@@ -197,7 +197,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_230"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -222,7 +222,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/rdl"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -233,7 +233,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_100"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -255,7 +255,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/bicep_curl"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -266,7 +266,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_60"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -292,7 +292,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/lat_pulldown"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -303,7 +303,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_120"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -325,7 +325,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/rows"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -336,7 +336,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_100"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -362,7 +362,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/shoulder_press"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -373,7 +373,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_180"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
@@ -382,7 +382,8 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"            app:cardCornerRadius="16dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
             app:layout_column="1"
             app:layout_columnWeight="1"
             app:layout_row="3">
@@ -394,7 +395,7 @@
                 android:layout_gravity="start"
                 android:padding="8dp"
                 android:text="@string/incline_bench"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
 
@@ -405,7 +406,7 @@
                 android:layout_gravity="end|bottom"
                 android:padding="8dp"
                 android:text="@string/_150"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/open_sans"
                 android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
