@@ -198,10 +198,10 @@
                     android:layout_marginRight="40dp"/>
 
                 <Button
-                    android:id="@+id/add_workoutBtb"
+                    android:id="@+id/logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_workout"
+                    android:text="Log Out"
                     android:layout_marginTop="5dp" />
             </LinearLayout>
         </LinearLayout>

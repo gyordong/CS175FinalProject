@@ -1,7 +1,6 @@
 package edu.sjsu.android.cs175finalproject;
 
 import android.Manifest;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -32,6 +32,8 @@ public class CameraFragment extends Fragment {
     private PreviewView previewView;
     private ImageCapture imageCapture;
     private ProcessCameraProvider cameraProvider;
+    private SharedViewModel sharedViewModel;
+    private boolean isPhotoTaken = false;
 
     private static final int REQUEST_CODE = 10;
     private final String[] REQUIRED_PERMISSIONS = new String[]{Manifest.permission.CAMERA};
@@ -40,6 +42,7 @@ public class CameraFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_camera, container, false);
     }
 
@@ -50,6 +53,9 @@ public class CameraFragment extends Fragment {
         previewView = view.findViewById(R.id.previewView);
         FloatingActionButton captureButton = view.findViewById(R.id.captureButton);
 
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.setPostCardVisible(true);
+
         if (allPermissionsGranted()) {
             startCamera();
         } else {
@@ -57,6 +63,14 @@ public class CameraFragment extends Fragment {
         }
 
         captureButton.setOnClickListener(v -> takePhoto());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (!isPhotoTaken) {
+            sharedViewModel.setPostCardVisible(false);
+        }
     }
 
     private void startCamera() {
@@ -100,6 +114,7 @@ public class CameraFragment extends Fragment {
                 new ImageCapture.OnImageSavedCallback() {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        isPhotoTaken = true;
                         String filePath = photoFile.getAbsolutePath();
 
                         Bundle bundle = new Bundle();

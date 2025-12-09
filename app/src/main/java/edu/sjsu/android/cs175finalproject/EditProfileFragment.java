@@ -53,6 +53,7 @@ public class EditProfileFragment extends Fragment {
     private ImageView profileImage;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private ActivityResultLauncher<String> permissionLauncher;
+    private Button logoutButton;
 
     private ImageView backArrow;
 
@@ -93,12 +94,10 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         Button saveButton = view.findViewById(R.id.saveProfileButton);
-
         profileImage = view.findViewById(R.id.editProfileImage);
-
         backArrow = view.findViewById(R.id.back_arrow);
-
         etName = view.findViewById(R.id.etName);
         etBenchPress = view.findViewById(R.id.etBenchPress);
         etDeadlift = view.findViewById(R.id.etDeadlift);
@@ -108,6 +107,8 @@ public class EditProfileFragment extends Fragment {
         etRows = view.findViewById(R.id.etRows);
         etShoulderPress = view.findViewById(R.id.etShoulderPress);
         etInclineBench = view.findViewById(R.id.etInclineBench);
+        logoutButton = view.findViewById(R.id.logout);
+
 
         loadProfilePicture();
 
@@ -177,7 +178,13 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        // TODO: add a listener to close the keyboard on edit profile when clicking non-interactable
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void savePreferences() {

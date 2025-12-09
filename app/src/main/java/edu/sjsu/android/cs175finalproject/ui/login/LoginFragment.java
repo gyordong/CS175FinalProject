@@ -118,8 +118,11 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                String username = usernameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                if (!(username == null || username.isEmpty() || password == null || password.isEmpty())) {
+                    loginViewModel.login(username, password);
+                }
             }
         });
 

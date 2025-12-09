@@ -83,7 +83,6 @@ public class AddPostFragment extends Fragment {
 
         confirmBtn.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Posted!", Toast.LENGTH_SHORT).show();
-            // TODO: save or upload post
         });
     }
 }

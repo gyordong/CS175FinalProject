@@ -1,24 +1,34 @@
 package edu.sjsu.android.cs175finalproject;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import java.io.File;
 
 public class HomeFragment extends Fragment {
 
 
     private TextView reactionDisplay;
+    private SharedViewModel sharedViewModel;
+    private CardView postCard;
+    private ImageView profilePic;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +56,16 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reactionDisplay = view.findViewById(R.id.reaction_display);
+        postCard = view.findViewById(R.id.hiddenPost);
+
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.getPostCardVisible().observe(getViewLifecycleOwner(), isVisible -> {
+            if (isVisible) {
+                postCard.setVisibility(View.VISIBLE);
+            } else {
+                postCard.setVisibility(View.GONE);
+            }
+        });
 
         reactButton = view.findViewById(R.id.react_button);
         reactButton.setOnLongClickListener(v -> {
@@ -71,6 +91,8 @@ public class HomeFragment extends Fragment {
                     })
                     .start();
         });
+        loadProfilePicture();
+
     }
 
     private void showReactionPopup(View anchorView){
@@ -104,5 +126,13 @@ public class HomeFragment extends Fragment {
         skull.setOnClickListener(reactionClick);
         shock.setOnClickListener(reactionClick);
         fire.setOnClickListener(reactionClick);
+    }
+
+    private void loadProfilePicture() {
+        File file = new File(getContext().getFilesDir(), "profile_picture.jpg");
+        if (file.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profilePic.setImageBitmap(bitmap);
+        }
     }
 }

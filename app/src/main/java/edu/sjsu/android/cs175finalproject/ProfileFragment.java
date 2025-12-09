@@ -180,5 +180,4 @@ public class ProfileFragment extends Fragment {
             profilePic.setImageBitmap(bitmap);
         }
     }
-
 }
