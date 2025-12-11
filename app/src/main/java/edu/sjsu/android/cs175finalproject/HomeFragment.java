@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 
 public class HomeFragment extends Fragment {
@@ -51,6 +53,8 @@ public class HomeFragment extends Fragment {
     ImageButton likeBtn;
     ImageButton reactButton;
     boolean liked = false;
+    TextView likeCount;
+    TextView reactCount;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class HomeFragment extends Fragment {
                 postCard.setVisibility(View.GONE);
             }
         });
+        reactCount = view.findViewById(R.id.reactCount);
 
         reactButton = view.findViewById(R.id.react_button);
         reactButton.setOnLongClickListener(v -> {
@@ -74,6 +79,7 @@ public class HomeFragment extends Fragment {
         });
 
         likeBtn = view.findViewById(R.id.likeBtn);
+        likeCount = view.findViewById(R.id.likeCount);
 
         likeBtn.setOnClickListener(v -> {
             liked = !liked;
@@ -85,8 +91,10 @@ public class HomeFragment extends Fragment {
                         likeBtn.animate().scaleX(1f).scaleY(1f).setDuration(120).start();
                         if (liked){
                             likeBtn.setImageResource(R.drawable.heart_filled);
+                            likeCount.setText("1");
                         }else{
                             likeBtn.setImageResource(R.drawable.heart_outline);
+                            likeCount.setText("0");
                         }
                     })
                     .start();
@@ -115,10 +123,15 @@ public class HomeFragment extends Fragment {
         Button shock = popupView.findViewById(R.id.shock_react);
         Button fire = popupView.findViewById(R.id.fire_react);
 
+        TextView reactCount = requireView().findViewById(R.id.reactCount);
+
+
         View.OnClickListener reactionClick = v -> {
             String emoji = ((Button)v).getText().toString();
             reactionDisplay.setText(emoji);
             reactionDisplay.setVisibility(View.VISIBLE);
+            int current = Integer.parseInt(reactCount.getText().toString());
+            reactCount.setText(String.valueOf(current + 1));
             popupWindow.dismiss();
         };
 
