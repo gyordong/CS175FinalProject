@@ -446,6 +446,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
+                            android:backgroundTint="@android:color/transparent"
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
