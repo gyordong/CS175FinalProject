@@ -16,3 +16,4 @@ local.properties
 *.idea/
 *.log
 /app/google-services.json
+.idea/deviceManager.xml
