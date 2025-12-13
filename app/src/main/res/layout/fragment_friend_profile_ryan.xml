@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment"
+    android:id="@+id/profileFragment">
+
+    <TextView
+        android:id="@+id/profileNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Ryan"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/playfair_display"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profilePic"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_pic_sample"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileNameText"
+        app:shapeAppearanceOverlay="@style/CircularImage"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/llCounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic">
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="10 Followers" />
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8 Following" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="215dp"
+        android:layout_height="106dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llCounts">
+
+        <TextView
+            android:id="@+id/tvStreakLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Streak"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStreakCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 Days"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/PRs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Personal Records"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/playfair_display"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="403dp"
+        android:layout_height="306dp"
+        android:padding="16dp"
+        app:columnCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PRs"
+        app:rowCount="4">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="0">
+
+            <TextView
+                android:id="@+id/benchPressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Bench Press"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/benchPressWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="180"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"            app:cardCornerRadius="16dp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="0">
+
+            <TextView
+                android:id="@+id/deadliftText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Deadlift"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/deadliftWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="230"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+
+            >
+
+            <TextView
+                android:id="@+id/rdlText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="RDL"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rdlWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="100"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="1">
+
+            <TextView
+                android:id="@+id/bicepCurlText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Bicep Curl"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/bicepCurlWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="60"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="2"
+
+            >
+
+            <TextView
+                android:id="@+id/latPulldownText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Lat Pulldown"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/latPulldownWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="120"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="2">
+
+            <TextView
+                android:id="@+id/rowText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Rows"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rowWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="100"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="3"
+
+            >
+
+            <TextView
+                android:id="@+id/shoulderPressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Shoulder Press"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/shoulderPressWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="180"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="16dp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="3">
+
+            <TextView
+                android:id="@+id/inclineBenchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="8dp"
+                android:text="Incline Bench"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/inclineBenchWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:padding="8dp"
+                android:text="150"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

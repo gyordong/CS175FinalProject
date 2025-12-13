@@ -206,8 +206,8 @@
                         android:layout_height="180dp"
                         android:layout_marginTop="12dp"
                         android:background="#E0E0E0"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_launcher_foreground" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/rachelpost" />
 
                     <!-- Likes and Comments -->
                     <LinearLayout
@@ -310,8 +310,8 @@
                         android:layout_height="180dp"
                         android:layout_marginTop="12dp"
                         android:background="#E0E0E0"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_launcher_foreground" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ericapost" />
 
                     <!-- Likes and Comments -->
                     <LinearLayout
@@ -414,8 +414,8 @@
                         android:layout_height="180dp"
                         android:layout_marginTop="12dp"
                         android:background="#E0E0E0"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_launcher_foreground" />
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ryanpost" />
 
                     <!-- Likes and Comments -->
                     <LinearLayout

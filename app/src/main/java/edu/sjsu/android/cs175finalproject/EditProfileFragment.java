@@ -177,14 +177,6 @@ public class EditProfileFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_editProfileFragment_to_profileFragment);
             }
         });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void savePreferences() {

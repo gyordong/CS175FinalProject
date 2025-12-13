@@ -8,6 +8,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,6 +35,22 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         Friend friend = friends.get(position);
         holder.name.setText(friend.getName());
         holder.username.setText(friend.getUsername());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Friend clickedFriend = friends.get(holder.getAdapterPosition());
+                String friendName = clickedFriend.getName();
+
+                if (friendName.equals("Rachel")) {
+                    Navigation.findNavController(v).navigate(R.id.action_friendFragment_to_friendProfileRachelFragment);
+                } else if (friendName.equals("Erica")) {
+                    Navigation.findNavController(v).navigate(R.id.action_friendFragment_to_friendProfileEricaFragment);
+                } else if (friendName.equals("Ryan")) {
+                    Navigation.findNavController(v).navigate(R.id.action_friendFragment_to_friendProfileRyanFragment);
+                }
+            }
+        });
     }
 
     @Override

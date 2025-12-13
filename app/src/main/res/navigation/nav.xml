@@ -32,7 +32,17 @@
         android:id="@+id/friendFragment"
         android:name="edu.sjsu.android.cs175finalproject.FriendFragment"
         android:label="fragment_friend"
-        tools:layout="@layout/fragment_friend" />
+        tools:layout="@layout/fragment_friend" >
+        <action
+            android:id="@+id/action_friendFragment_to_friendProfileRachelFragment"
+            app:destination="@id/friendProfileRachelFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_friendProfileEricaFragment"
+            app:destination="@id/friendProfileEricaFragment" />
+        <action
+            android:id="@+id/action_friendFragment_to_friendProfileRyanFragment"
+            app:destination="@id/friendProfileRyanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="edu.sjsu.android.cs175finalproject.EditProfileFragment"
@@ -53,4 +63,19 @@
             android:id="@+id/action_addPostFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/friendProfileRachelFragment"
+        android:name="edu.sjsu.android.cs175finalproject.FriendProfileRachelFragment"
+        android:label="fragment_friend_profile_rachel"
+        tools:layout="@layout/fragment_friend_profile_rachel" />
+    <fragment
+        android:id="@+id/friendProfileEricaFragment"
+        android:name="edu.sjsu.android.cs175finalproject.FriendProfileEricaFragment"
+        android:label="fragment_friend_profile_erica"
+        tools:layout="@layout/fragment_friend_profile_erica" />
+    <fragment
+        android:id="@+id/friendProfileRyanFragment"
+        android:name="edu.sjsu.android.cs175finalproject.FriendProfileRyanFragment"
+        android:label="fragment_friend_profile_ryan"
+        tools:layout="@layout/fragment_friend_profile_ryan" />
 </navigation>
