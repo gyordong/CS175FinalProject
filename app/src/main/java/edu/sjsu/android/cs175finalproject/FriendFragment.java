@@ -40,8 +40,8 @@ public class FriendFragment extends Fragment {
 
         friendList = new ArrayList<>();
         friendList.add(new Friend("Ryan", "@ryan.duong02@sjsu.edu"));
-        friendList.add(new Friend("Erica", "@test2"));
-        friendList.add(new Friend("Rachel", "@test3"));
+        friendList.add(new Friend("Erica", "@erica.xue@sjsu.edu"));
+        friendList.add(new Friend("Rachel", "@rachel.tsai01@sjsu.edu"));
 
         RecyclerView friendsRecycler = view.findViewById(R.id.friendsRecycler);
         friendsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));

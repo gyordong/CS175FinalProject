@@ -113,11 +113,12 @@
                             android:src="@drawable/heart_outline" />
 
                         <TextView
+                            android:id="@+id/likeCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
-                            android:text="2"
+                            android:text="0"
                             android:textSize="17sp" />
 
                         <ImageButton
@@ -131,10 +132,11 @@
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
+                            android:id="@+id/reactCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="@string/_2_reactions"
+                            android:text="0"
                             android:textSize="17sp" />
 
                     </LinearLayout>
@@ -446,6 +448,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
+                            android:backgroundTint="@android:color/transparent"
                             android:src="@drawable/outline_add_reaction_24" />
 
                         <TextView
